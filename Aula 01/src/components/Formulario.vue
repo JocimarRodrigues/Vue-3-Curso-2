@@ -33,7 +33,8 @@ export default defineComponent({
     name: 'Formulario',
     data() {
         return {
-            tempoEmSegundos: 0
+            tempoEmSegundos: 0,
+            cronometro: 0
         }
     },
     computed: {
@@ -55,14 +56,14 @@ export default defineComponent({
     },
     methods: {
         iniciar() {
-            setInterval(() => {
+            this.cronometro = setInterval(() => {
                 this.tempoEmSegundos += 1
             }, 1000)
         },
         finalizar() {
-            setInterval(() => {
-                this.tempoEmSegundos -= 1
-            }, 1000)
+
+            clearInterval(this.cronometro)
+
         }
     }
 })
