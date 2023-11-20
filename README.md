@@ -6,3 +6,7 @@
 - Integre as variáveis de um componente com o seu template, utilizando two-way data binding
 - Delimite as reponsabilidades de um componente
 - Elaborare uma aplicação utilizando Vue e TS
+
+# Documentação Date API
+
+- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Date
