@@ -12,7 +12,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Proptype } from 'vue';
+import { defineComponent } from 'vue';
+import type { PropType } from 'vue'
 import Cronometro from './Cronometro.vue';
 import type ITarefa from '../interfaces/ITarefa'
 import Box from './Box.vue'
@@ -25,7 +26,7 @@ export default defineComponent({
     },
     props: {
         tarefa: {
-            type: Object as Proptype<ITarefa>,
+            type: Object as PropType<ITarefa>,
             required: true
         }
     }
