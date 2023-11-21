@@ -116,3 +116,66 @@ export default defineComponent({
 - Assim concluindo a lógica.
 
 - Caso tenha dúvidas o link da aula é esse => https://cursos.alura.com.br/course/vue3-comecando-framework/task/97501
+
+# Definindo um valor padrao ao chamar  uma props
+
+Tarefa.vue
+```vue
+<template>
+    <div class="box has-text-weight-bold">
+        <div class="columns">
+            <div class="column is-7">
+                {{ tarefa.descricao || 'Tarefa sem descricao' }}
+            </div>
+            <div class="column">
+                <Cronometro :tempoEmSegundos="tarefa.duracaoEmSegundos" />
+            </div>
+        </div>
+    </div>
+</template>
+```
+
+- Tu pode usar o || para definir um valor padrao para a props, caso ela não venha.
+
+# Sobre o Slot
+
+- Olha o que aconteceu, tu criou um novo componente para refatorar o código e colocou todo o conteúdo do template de Tarefa, dentro dele, mas aconteceu um bug, que ao adicionar as tarefas, o conteúdo ficava em branco.
+- Para resolver esse problema tu vai usar o slot, q é como se fosse um "children", isso é: Vai renderizar todo o conteúdo que vai ficar dentro do componente
+
+Box.vue
+```vue
+<template>
+    <div class="box has-text-weight-bold">
+        <slot></slot>
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+    name: 'Box'
+})
+</script>
+
+<style scoped>
+.box {
+    background: #FAF0CA;
+}
+</style>
+```
+
+Tarefa.vue
+```vue
+<template>
+    <Box>
+        <div class="columns">
+            <div class="column is-7">
+                {{ tarefa.descricao }}
+            </div>
+            <div class="column">
+                <Cronometro :tempoEmSegundos="tarefa.duracaoEmSegundos" />
+            </div>
+        </div>
+    </Box>
+</template>
+```
