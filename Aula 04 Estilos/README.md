@@ -219,3 +219,73 @@ export default defineComponent({
 - 3 Tu vai usar o :class para usar javascript dentro do código da classe e como tu realizou a lógica de boolean a classe modo-escuro só vai existir se modoEscuroAtivo for true
 
 - Se tiver dúvidas o link da aula é esse => https://cursos.alura.com.br/course/vue3-comecando-framework/task/97504
+
+
+# Apliccando estilo com objetos
+
+- Isso funciona semelhante ao css inline, tu vai usar o bind, criar uma classe de estilo e dentro dessa classe tu vai definir o objeto de estilos
+- Depois, basta entrar no método data(), criar o objeto de estilo e definir os estilos como se fosse o css normal
+
+Exemplo
+
+
+Utilizando Objetos
+Box.vue
+```vue
+<template>
+    <div class="box has-text-weight-bold" :style="estilos">
+        <slot></slot>
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+    name: 'Box',
+    data() {
+        return {
+            estilos: {
+                background: '#FAF0CA'
+            }
+        }
+    }
+})
+</script>
+
+
+```
+
+Forma padrão
+Box.vue
+```vue
+<template>
+    <div class="box has-text-weight-bold">
+        <slot></slot>
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+    name: 'Box'
+})
+</script>
+
+<style scoped>
+.box {
+    background: #FAF0CA;
+}
+</style>
+```
+
+## Observação
+
+- Caso a propriedade tenha o -, por exemplo background-color tu pode resolver de duas formas
+
+### Forma 1
+
+- Utilizando camelCase = escrevendo assim => backgroundColor: #FAF0CA
+
+### Forma 2
+
+- Utilizando '' = 'background-color': '#FAF0CA'
